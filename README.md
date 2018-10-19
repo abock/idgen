@@ -9,6 +9,7 @@
 * [Versions 3 and 5 GUID/UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Versions_3_and_5_(namespace_name-based)): reproducible hashed namespace + name IDs
   * _Note: use version 5 (SHA-1) over version 3 (MD5) unless compatibility is required._
 * [Version 4 GUID/UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)): secure random IDs
+* [Hashid](https://hashids.org/): Stable, short, unique, non-sequential IDs from integer array input
 * [Nano ID](https://zelark.github.io/nano-id-cc/): secure random IDs of configurable size and alphabet
 * Xcode Storyboard/XIB IDs
 
