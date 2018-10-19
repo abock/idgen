@@ -55,6 +55,18 @@ $ idgen -f short
 9lsQ5-h1nEy9uS3DMbLoeg
 ```
 
+### Generate a Hashid from a set of numbers
+```bash
+$ idgen hashid 3 100 45 11
+Q0i67ixxir
+```
+
+### Generate a Hashid from a set of numbers with a minimum ID length, salt, and alphabet
+```bash
+$ idgen hashid  3 100 45 11 -salt bojangles -a aBcDeFgHiJkLmNoPqRsTuV -s 32
+BPDNPBNqkgLJVRsVaFLBsVJRVDmaeaLm
+```
+
 ### Generate 5 Nano IDs
 ```bash
 $ idgen nanoid -n 5
