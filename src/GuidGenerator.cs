@@ -158,6 +158,9 @@ namespace Idgen
                 if (string.IsNullOrEmpty (name))
                     throw new Exception ("Must specify NAME as the first positional argument.");
 
+                if (name == "-")
+                    name = Console.In.ReadToEnd ();
+
                 var @namespace = args.Skip (1).FirstOrDefault ();
                 Guid namespaceGuid = default;
 
