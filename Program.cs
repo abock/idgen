@@ -33,7 +33,8 @@ namespace Idgen
             GuidV4,
             GuidV5,
             GuidV3,
-            Xcode
+            Xcode,
+            Nanoid
         }
 
         enum GuidFormat
@@ -59,6 +60,8 @@ namespace Idgen
             bool showHelp = false;
             bool showVersion = false;
             uint numberOfIds = 1;
+            int nanoidSize = 21;
+            string nanoidAlphabet = "_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             IdKind kind = default;
             GuidFormat guidFormat = default;
             Filter filter = default;
@@ -145,6 +148,22 @@ namespace Idgen
                         if (!Guid.TryParse (v, out guidNamespace))
                             throw new Exception ("NAMESPACE_GUID is not a valid GUID.");
                     }
+                },
+                {
+                    "nanoid:",
+                    "Generate a Nano ID of {SIZE} characters (default: 21). See https://zelark.github.io/nano-id-cc/.",
+                    v => {
+                        if (v != null && (!int.TryParse (v, out nanoidSize) || nanoidSize <= 0))
+                            throw new Exception (
+                                "SIZE must be a positive integer.");
+
+                        kind = IdKind.Nanoid;
+                    }
+                },
+                {
+                    "nanoid-alphabet=",
+                    $"Set the alphabet for -nanoid (default is {nanoidAlphabet})",
+                    v => nanoidAlphabet = v
                 },
                 {
                     "xcode",
@@ -234,6 +253,9 @@ namespace Idgen
                 case IdKind.Xcode:
                     id = XcodeId ();
                     break;
+                case IdKind.Nanoid:
+                    id = Nanoid.Nanoid.Generate (nanoidAlphabet, nanoidSize);
+                    break;
                 }
 
                 if (filter.HasFlag (Filter.Uppercase) && guidFormat != GuidFormat.Base64)
@@ -255,25 +277,13 @@ namespace Idgen
             Console.ResetColor ();
         }
 
-        static readonly char [] alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".ToCharArray ();
-
         static string XcodeId ()
-        {
-            ulong bits = (
-                ((ulong)random.Next () << 32) |
-                (uint)(DateTime.Now.Ticks & 0xffffffff)
-            ) + 0xa5555529;
-
-            var buffer = BitConverter.GetBytes (bits);
-            var id = string.Empty;
-
-            for (int i = 0; i < buffer.Length; i++) {
-                if (i == 3 || i == 5)
-                id += "-";
-                id += alphabet [buffer [i] % alphabet.Length];
-            }
-
-            return id;
-        }
+            => Nanoid
+                .Nanoid
+                .Generate (
+                    alphabet: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+                    size: 8)
+                .Insert(3, "-")
+                .Insert(6, "-");
     }
 }

@@ -14,6 +14,7 @@ Usage: idgen [OPTIONS]+
 OPTIONS:
 
   -h, -?, --help             Show this help.
+  -V, --version              Show the idgen version.
   -n=NUMBER                  Generate NUMBER of identifiers
   -u, --upper                Output the identifier in upper-case
   -f, --format=FORMAT        FORMAT to use (see FORMATS) for GUID identifiers.
@@ -31,10 +32,16 @@ OPTIONS:
                              For -guidv5 and -guidv3 options, specify the
                                NAMESPACE_GUID that should be used. The
                                namespace must itself be a GUID.
+      --nanoid[=SIZE]        Generate a Nano ID of SIZE characters (default: 21)
+                               . See https://zelark.github.io/nano-id-cc/.
+      --nanoid-alphabet=VALUE
+                             Set the alphabet for -nanoid (default is _~
+                               0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL-
+                               MNOPQRSTUVWXYZ)
       --xcode                Generate an identifier for use in Xcode
                                storyboards/XIBs.
-  -b, --bojangles            Ensures generated identifiers will have with all '
-                               AA' strings replaced with 'BB' strings.
+  -b, --bojangles            Ensures generated identifiers will have 'AA'
+                               strings replaced with 'BB' strings.
 
 FORMATS:
 
