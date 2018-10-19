@@ -95,9 +95,9 @@ namespace Idgen
                 {
                     "n=",
                     "Generate {NUMBER} of identifiers", v => {
-                    if (!uint.TryParse (v, out numberOfIds))
-                        throw new ArgumentOutOfRangeException (
-                            "NUMBER must be a positive integer, or zero, for the -number option.");
+                        if (!uint.TryParse (v, out numberOfIds))
+                            throw new Exception (
+                                "NUMBER must be a positive integer, or zero, for the -number option.");
                     }
                 },
                 {
@@ -110,7 +110,7 @@ namespace Idgen
                     "{FORMAT} to use (see FORMATS) for GUID identifiers.",
                     v => {
                         if (!Enum.TryParse<GuidFormat> (v, true, out guidFormat))
-                            throw new ArgumentException (
+                            throw new Exception (
                                 "Invalid FORMAT for the -format option.");
                     }
                 },
@@ -143,7 +143,7 @@ namespace Idgen
                     "The namespace must itself be a GUID.",
                     v => {
                         if (!Guid.TryParse (v, out guidNamespace))
-                            throw new ArgumentException ("NAMESPACE_GUID is not a valid GUID.");
+                            throw new Exception ("NAMESPACE_GUID is not a valid GUID.");
                     }
                 },
                 {
@@ -153,7 +153,7 @@ namespace Idgen
                 },
                 {
                     "b|bojangles",
-                    "Ensures generated identifiers will have with all 'AA' strings replaced with 'BB' strings.",
+                    "Ensures generated identifiers will have 'AA' strings replaced with 'BB' strings.",
                     v => ToggleFilter (v, Filter.Bojanles)
                 },
                 { "" },
