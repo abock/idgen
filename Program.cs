@@ -51,8 +51,7 @@ namespace Idgen
         enum Filter
         {
             None = 0,
-            Uppercase = 1 << 0,
-            Bojanles = 1 << 1,
+            Uppercase = 1 << 0
         }
 
         static int Main (string[] args)
@@ -170,11 +169,6 @@ namespace Idgen
                     "Generate an identifier for use in Xcode storyboards/XIBs.",
                     v => kind = IdKind.Xcode
                 },
-                {
-                    "b|bojangles",
-                    "Ensures generated identifiers will have 'AA' strings replaced with 'BB' strings.",
-                    v => ToggleFilter (v, Filter.Bojanles)
-                },
                 { "" },
                 { "FORMATS:" },
                 { "" },
@@ -260,9 +254,6 @@ namespace Idgen
 
                 if (filter.HasFlag (Filter.Uppercase) && guidFormat != GuidFormat.Base64)
                     id = id.ToUpperInvariant ();
-
-                if (filter.HasFlag (Filter.Bojanles))
-                    id = id.Replace ("aa", "bb").Replace ("AA", "BB");
 
                 Console.WriteLine (id);
             }
