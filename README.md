@@ -56,7 +56,7 @@ $ idgen -f short
 
 ### Generate 5 Nano IDs
 ```bash
-$ idgen -n 5 -nanoid
+$ idgen nanoid -n 5
 Fm82ZL3eyabMeVAgDGF7k
 LlrnWI3YrhUbQY3zHiyYc
 JUExm8eTVmLjLBjVeabZd
@@ -66,19 +66,19 @@ izaokjb4E9ft6~rAgINEy
 
 ### Generate a Nano ID with a custom size and alphabet
 ```bash
-$ idgen -nanoid=32 -nanoid-alphabet=abcdefghijklmnopqrstuvwxyz
+$ idgen nanoid -s 32 -alphabet abcdefghijklmnopqrstuvwxyz
 aqmtbhpgomnpvudpmtesoooakyrrdrap
 ```
 
 ### Generate a v5 SHA-1 namespace + name hashed GUID using the URL namespace and the name _`bojangles`_
 ```bash
-$ idgen -guidv5 bojangles
+$ idgen v5 bojangles
 11de2b26-984e-56b4-aa25-b3bd28ea5ac2
 ```
 
 ### Generate a v5 SHA-1 namespace + name hashed GUID using a custom namespace and the name _`bojangles`_
 ```bash
-$ idgen -guidv5 bojangles -namespace 11de2b26-984e-56b4-aa25-b3bd28ea5ac2
+$ idgen v5 bojangles 11de2b26-984e-56b4-aa25-b3bd28ea5ac2
 de9425a4-e8dd-510b-8e00-b6ac890c733a
 ```
 
@@ -91,7 +91,7 @@ e54b4418-5a27-5bdb-a1e8-24a89e2a8634
 
 ### Generate an ID suitable for an Xcode storyboard
 ```bash
-$ idgen -xcode
+$ idgen xcode
 KoW-8m-wjo
 ```
 
