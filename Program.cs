@@ -34,7 +34,7 @@ namespace Idgen
             uint numberOfIds = 1;
 
             var firstArg = args.FirstOrDefault ();
-            if (string.IsNullOrEmpty (firstArg) || firstArg [0] == '-' || firstArg [0] == '/')
+            if (string.IsNullOrEmpty (firstArg) || firstArg [0] == '-' || firstArg [0] == '/') {
                 switch (firstArg?.Substring (1).ToLowerInvariant ()) {
                 case "h":
                 case "?":
@@ -85,6 +85,7 @@ namespace Idgen
                 new GuidGenerator.V5 (),
                 new GuidGenerator.V3 (),
                 new NanoidGenerator (),
+                new HashidsGenerator (),
                 new XcodeIdGenerator ()
             };
 
