@@ -216,6 +216,9 @@ namespace Idgen
                 return 0;
             }
 
+            if (guidName == "-")
+                guidName = Console.In.ReadToEnd ();
+
             string FormatGuid (Guid guid)
             {
                 switch (guidFormat) {

@@ -82,6 +82,13 @@ $ idgen -guidv5 bojangles -namespace 11de2b26-984e-56b4-aa25-b3bd28ea5ac2
 de9425a4-e8dd-510b-8e00-b6ac890c733a
 ```
 
+### Generate a v5 SHA-1 namespace + name hashed GUID from `stdin`
+
+```bash
+$ idgen -guidv5 - < /usr/share/dict/words
+e54b4418-5a27-5bdb-a1e8-24a89e2a8634
+```
+
 ### Generate an ID suitable for an Xcode storyboard
 ```bash
 $ idgen -xcode
