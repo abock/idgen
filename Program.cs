@@ -44,7 +44,8 @@ namespace Idgen
             B,
             P,
             X,
-            Base64
+            Base64,
+            Short
         }
 
         [Flags]
@@ -175,6 +176,9 @@ namespace Idgen
                 { "  Base64   The binary representation of the GUID encoded in base 64." } ,
                 { "           This format ignores the -upper option if specified." },
                 { "" },
+                { "  Short    Like Base64, but with padding (==) stripped," },
+                { "           '/' changed to '_', and '+' changed to '-'." },
+                { "" },
                 { "  N        32 digits:" },
                 { "           00000000000000000000000000000000" },
                 { "" },
@@ -225,6 +229,11 @@ namespace Idgen
                     return guid.ToString ("X");
                 case GuidFormat.Base64:
                     return Convert.ToBase64String (guid.ToByteArray ());
+                case GuidFormat.Short:
+                    return Convert.ToBase64String (guid.ToByteArray ())
+                        .Replace ("/", "_")
+                        .Replace ("+", "-")
+                        .Substring (0, 22);
                 case GuidFormat.D:
                 default:
                     return guid.ToString ("D");
