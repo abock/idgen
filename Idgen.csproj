@@ -14,12 +14,8 @@
     <RepositoryUrl>https://github.com/abock/idgen</RepositoryUrl>
     <PackageLicenseUrl>https://github.com/abock/idgen/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://github.com/abock/idgen/raw/master/icon.png</PackageIconUrl>
-    <PackageTags>guid;guids;generator;id;identifier;identifiers</PackageTags>
-    <Description>
-      A simple .NET Core global tool that can generate any number of v3 (MD5 hashed),
-      v4 (random), or v5 (SHA-1 hashed) GUID/UUIDs. It can also generate Xcode identifiers
-      suitable for storyboard/XIB files. It supports a number of formatting options as well.
-    </Description>
+    <PackageTags>guid;guids;generator;id;identifier;identifiers;nanoid;uuid</PackageTags>
+    <Description>A simple .NET Core global tool that can generate any number of v3 (MD5 hashed), v4 (random), or v5 (SHA-1 hashed) GUID/UUIDs. It can also generate Xcode identifiers suitable for storyboard/XIB files. It supports a number of formatting options as well.</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Nanoid" Version="1.0.0"/>
