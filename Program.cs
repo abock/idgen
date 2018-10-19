@@ -104,12 +104,12 @@ namespace Idgen
                 },
                 {
                     "u|upper",
-                    "Output the identifier in upper-case",
+                    "Output the identifier in upper-case (ignored for non-GUID identifiers where case matters).",
                     v => ToggleFilter (v, Filter.Uppercase)
                 },
                 {
                     "f|format=",
-                    "{FORMAT} to use (see FORMATS) for GUID identifiers.",
+                    "{FORMAT} to use (see GUID FORMATS) for GUID identifiers.",
                     v => {
                         if (!Enum.TryParse<GuidFormat> (v, true, out guidFormat))
                             throw new Exception (
@@ -170,10 +170,10 @@ namespace Idgen
                     v => kind = IdKind.Xcode
                 },
                 { "" },
-                { "FORMATS:" },
+                { "GUID FORMATS:" },
                 { "" },
                 { "  Base64   The binary representation of the GUID encoded in base 64." } ,
-                { "           This format ignores the -uppercase option if specified." },
+                { "           This format ignores the -upper option if specified." },
                 { "" },
                 { "  N        32 digits:" },
                 { "           00000000000000000000000000000000" },
@@ -231,6 +231,12 @@ namespace Idgen
                 }
             }
 
+            bool IsGuidKind ()
+                => kind == IdKind.GuidV3 || kind == IdKind.GuidV4 || kind == IdKind.GuidV5;
+
+            bool CanUppercase ()
+                => IsGuidKind () && guidFormat != GuidFormat.Base64 && guidFormat != GuidFormat.Short;
+
             for (uint i = 0; i < numberOfIds; i++) {
                 string id = null;
 
@@ -252,7 +258,7 @@ namespace Idgen
                     break;
                 }
 
-                if (filter.HasFlag (Filter.Uppercase) && guidFormat != GuidFormat.Base64)
+                if (filter.HasFlag (Filter.Uppercase) && CanUppercase ())
                     id = id.ToUpperInvariant ();
 
                 Console.WriteLine (id);
