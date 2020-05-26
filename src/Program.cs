@@ -41,6 +41,7 @@ namespace Idgen
                     case "h":
                     case "?":
                     case "help":
+                    case "-help":
                         break;
                     default:
                         args = new[] { "v4" }
