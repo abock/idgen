@@ -3,10 +3,8 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>idgen</AssemblyName>
-    <LangVersion>latest</LangVersion>
     <PackAsTool>true</PackAsTool>
     <PackageId>IdentifierGenerator</PackageId>
-    <PackageOutputPath>$(MSBuildThisFileDirectory)_artifacts</PackageOutputPath>
   </PropertyGroup>
   <PropertyGroup>
     <Authors>Aaron Bockover</Authors>
@@ -18,7 +16,7 @@
     <Description>A simple .NET Core global tool to generate any number of GUID/UUIDs (v3 MD5 hashed, v4 random, v5 SHA-1 hashed), Hashids, Nanoids, Xcode identifiers suitable for storyboard and XIB files, and more.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="icon.png" Pack="true" PackagePath="\"/>
+    <None Include="..\..\icon.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Hashids.net" Version="1.3.0"/>
