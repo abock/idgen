@@ -17,6 +17,6 @@ namespace Idgen
         string CommandDescription { get; }
         string UsageArguments { get; }
         OptionSet Options { get; }
-        string Generate (IEnumerable<string> args);
+        string Generate(IEnumerable<string> args);
     }
 }

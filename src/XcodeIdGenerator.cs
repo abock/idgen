@@ -20,10 +20,10 @@ namespace Idgen
         public string UsageArguments { get; }
         public OptionSet Options { get; }
 
-        public string Generate (IEnumerable<string> args)
+        public string Generate(IEnumerable<string> args)
             => Nanoid
                 .Nanoid
-                .Generate (
+                .Generate(
                     alphabet: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
                     size: 8)
                 .Insert(3, "-")

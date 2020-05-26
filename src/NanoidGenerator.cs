@@ -23,9 +23,10 @@ namespace Idgen
         public string UsageArguments { get; }
         public OptionSet Options { get; }
 
-        public NanoidGenerator ()
+        public NanoidGenerator()
         {
-            Options = new OptionSet {
+            Options = new OptionSet
+            {
                 {
                     "s|size=",
                     "The ID will be {SIZE} characters in length (21 if unspecified).",
@@ -43,7 +44,7 @@ namespace Idgen
             };
         }
 
-        public string Generate (IEnumerable<string> args)
-            => Nanoid.Nanoid.Generate (alphabet, size);
+        public string Generate(IEnumerable<string> args)
+            => Nanoid.Nanoid.Generate(alphabet, size);
     }
 }

@@ -28,9 +28,10 @@ namespace Idgen
         public string UsageArguments { get; } = "NUMBERS+";
         public OptionSet Options { get; }
 
-        public HashidsGenerator ()
+        public HashidsGenerator()
         {
-            Options = new OptionSet {
+            Options = new OptionSet
+            {
                 {
                     "salt=",
                     $"Set the salt for the hashid.",
@@ -39,7 +40,8 @@ namespace Idgen
                 {
                     "s|size=",
                     "The ID should be at least {SIZE} characters in length.",
-                    v => {
+                    v =>
+                    {
                         if (v != null && (!int.TryParse (v, out minHashLength) || minHashLength <= 0))
                             throw new Exception (
                                 "SIZE must be a positive integer.");
@@ -58,16 +60,17 @@ namespace Idgen
             };
         }
 
-        public string Generate (IEnumerable<string> args)
+        public string Generate(IEnumerable<string> args)
         {
-            var numberStrings = args.ToArray ();
+            var numberStrings = args.ToArray();
             if (numberStrings == null || numberStrings.Length == 0)
-                throw new Exception ("At least one NUMBER is required to generate a hashid.");
+                throw new Exception("At least one NUMBER is required to generate a hashid.");
 
-            return new Hashids (salt, minHashLength, alphabet, seps)
-                .Encode (numberStrings.Select (a => {
-                    if (!uint.TryParse (a, out var part))
-                        throw new Exception ($"NUMBER '{a}'must be a positive integer or zero.");
+            return new Hashids(salt, minHashLength, alphabet, seps)
+                .Encode(numberStrings.Select(a =>
+                {
+                    if (!uint.TryParse(a, out var part))
+                        throw new Exception($"NUMBER '{a}'must be a positive integer or zero.");
                     return (int)part;
                 }));
         }
