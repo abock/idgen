@@ -13,6 +13,8 @@
 * [Nano ID](https://zelark.github.io/nano-id-cc/): secure random IDs of configurable size and alphabet
 * Xcode Storyboard/XIB IDs
 
+It can also encode strings for [3x4 numeric keypad/phone entry][phonewords]. This feature was implemented for and tested on [Fidelity's](https://www.fidelity.com/) antiquated phone authentication system, wherein they ask for an account password to be entered on a phone keypad.
+
 ## Install & Update
 
 ### Install
@@ -108,6 +110,13 @@ $ idgen xcode
 KoW-8m-wjo
 ```
 
+### Encode a string suitable for [3x4 numeric keypad/phone entry][phonewords]
+```bash
+$ idgen phone "hello world"
+43556*96753#
+```
+
+
 #### GUID Formats
 
 For GUID/UUIDs, a number of representation formats are supported via the `-f` or `-format`
@@ -121,3 +130,5 @@ For GUID/UUIDs, a number of representation formats are supported via the `-f` or
 | `B` | 32 digits separated by hyphens, enclosed in braces:<br>`{00000000-0000-0000-0000-000000000000}` |
 | `P` | 32 digits separated by hyphens, enclosed in parentheses:<br>`(00000000-0000-0000-0000-000000000000)` |
 | `X` | Four hexadecimal values enclosed in braces, where the fourth value is a subset of eight hexadecimal values that is also enclosed in braces:<br>`{0x00000000,0x0000,0x0000,{0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}}` |
+
+[phonewords]: https://en.wikipedia.org/wiki/Telephone_keypad

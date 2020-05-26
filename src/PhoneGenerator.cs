@@ -17,7 +17,7 @@ namespace Idgen
         public string Command { get; } = "phone";
 
         public string CommandDescription { get; }
-            = "Encodes a phrase suitable for input into a phone (0-9 * keys)";
+            = "Encodes a phrase suitable for input into a phone (0-9 * keys). See https://en.wikipedia.org/wiki/Telephone_keypad.";
 
         public string UsageArguments { get; } = "PHRASE";
 
