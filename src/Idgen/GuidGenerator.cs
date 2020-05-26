@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 using Mono.Options;
 
@@ -15,19 +16,26 @@ using static Xamarin.GuidHelpers;
 
 namespace Idgen
 {
+    public enum GuidEncoding
+    {
+        BigEndian,
+        MixedEndian
+    }
+
+    public enum GuidFormat
+    {
+        D,
+        N,
+        B,
+        P,
+        X,
+        Base64,
+        Short
+    }
+
     public abstract class GuidGenerator : IIdGenerator
     {
-        enum GuidFormat
-        {
-            D,
-            N,
-            B,
-            P,
-            X,
-            Base64,
-            Short
-        }
-
+        GuidEncoding encoding;
         GuidFormat format;
         bool uppercase;
 
@@ -58,6 +66,15 @@ namespace Idgen
                     "Output the GUID in upper-case (except for when -format is 'Base64' or 'Short').",
                     v => uppercase = v != null
                 },
+                {
+                    "me|mixed-endian",
+                    "Use mixed endian encoding whereby the first three components are " +
+                    "little-endian and the last two are big-endian. " +
+                    "See https://en.wikipedia.org/wiki/Universally_unique_identifier#Encoding",
+                    v => encoding = v is null
+                        ? GuidEncoding.BigEndian
+                        : GuidEncoding.MixedEndian
+                },
                 { "" },
                 { "GUID FORMATS:" },
                 { "" },
@@ -86,7 +103,16 @@ namespace Idgen
             };
         }
 
-        string FormatGuid(Guid guid)
+        static Guid ToMixedEndian(Guid guid)
+        {
+            var bytes = guid.ToByteArray();
+            Array.Reverse(bytes, 0, 4);
+            Array.Reverse(bytes, 4, 2);
+            Array.Reverse(bytes, 6, 2);
+            return new Guid(bytes);
+        }
+
+        static string FormatGuid(GuidFormat format, Guid guid)
         {
             switch (format)
             {
@@ -111,22 +137,33 @@ namespace Idgen
             }
         }
 
-        protected abstract Guid Generate(IEnumerable<string> args);
+        protected abstract Guid GenerateGuid(IEnumerable<string> args);
 
-        string IIdGenerator.Generate(IEnumerable<string> args)
+        public string Generate(IEnumerable<string> args = null)
+            => Generate(encoding, format, args);
+
+        public string Generate(
+            GuidEncoding encoding,
+            GuidFormat format,
+            IEnumerable<string> args = null)
         {
-            var guid = FormatGuid(Generate(args));
+            var guid = GenerateGuid(args ?? Array.Empty<string>());
+
+            if (encoding == GuidEncoding.MixedEndian)
+                guid = ToMixedEndian(guid);
+
+            var guidString = FormatGuid(format, guid);
 
             switch (format)
             {
                 case GuidFormat.Base64:
                 case GuidFormat.Short:
-                    return guid;
+                    return guidString;
                 default:
                     if (uppercase)
-                        return guid.ToUpperInvariant();
+                        return guidString.ToUpperInvariant();
 
-                    return guid;
+                    return guidString;
             }
         }
 
@@ -138,7 +175,7 @@ namespace Idgen
             {
             }
 
-            protected override Guid Generate(IEnumerable<string> args)
+            protected override Guid GenerateGuid(IEnumerable<string> args)
                 => Guid.NewGuid();
         }
 
@@ -156,7 +193,7 @@ namespace Idgen
                     commandDescription)
                 => this.generator = generator;
 
-            protected sealed override Guid Generate(IEnumerable<string> args)
+            protected sealed override Guid GenerateGuid(IEnumerable<string> args)
             {
                 var name = args.FirstOrDefault();
                 if (string.IsNullOrEmpty(name))
@@ -192,6 +229,23 @@ namespace Idgen
                     namespaceGuid = GuidNamespace.URL;
 
                 return generator(namespaceGuid, name);
+            }
+
+            public string Generate(
+                GuidEncoding encoding,
+                GuidFormat format,
+                string name,
+                string @namespace = null)
+            {
+                if (name is null)
+                    throw new ArgumentNullException(nameof(name));
+
+                var args = new List<string>(2);
+                args.Add(name);
+                if (@namespace is object)
+                    args.Add(@namespace);
+                
+                return Generate(encoding, format, args);
             }
         }
 
