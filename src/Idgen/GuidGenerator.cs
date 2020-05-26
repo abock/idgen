@@ -15,7 +15,7 @@ using static Xamarin.GuidHelpers;
 
 namespace Idgen
 {
-    abstract class GuidGenerator : IIdGenerator
+    public abstract class GuidGenerator : IIdGenerator
     {
         enum GuidFormat
         {
@@ -130,7 +130,7 @@ namespace Idgen
             }
         }
 
-        internal sealed class V4 : GuidGenerator
+        public sealed class V4 : GuidGenerator
         {
             public V4() : base(
                 "v4",
@@ -142,7 +142,7 @@ namespace Idgen
                 => Guid.NewGuid();
         }
 
-        internal abstract class NamespaceNameGuidGenerator : GuidGenerator
+        public abstract class NamespaceNameGuidGenerator : GuidGenerator
         {
             readonly Func<Guid, string, Guid> generator;
 
@@ -195,7 +195,7 @@ namespace Idgen
             }
         }
 
-        internal sealed class V3 : NamespaceNameGuidGenerator
+        public sealed class V3 : NamespaceNameGuidGenerator
         {
             public V3() : base(
                 "v3",
@@ -206,7 +206,7 @@ namespace Idgen
             }
         }
 
-        internal sealed class V5 : NamespaceNameGuidGenerator
+        public sealed class V5 : NamespaceNameGuidGenerator
         {
             public V5() : base(
                 "v5",

@@ -12,7 +12,7 @@ using Mono.Options;
 
 namespace Idgen
 {
-    sealed class XcodeIdGenerator : IIdGenerator
+    public sealed class XcodeIdGenerator : IIdGenerator
     {
         public string Command { get; } = "xcode";
         public string CommandDescription { get; }

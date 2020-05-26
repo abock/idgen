@@ -15,7 +15,7 @@ using HashidsNet;
 
 namespace Idgen
 {
-    sealed class HashidsGenerator : IIdGenerator
+    public sealed class HashidsGenerator : IIdGenerator
     {
         int minHashLength = 0;
         string alphabet = Hashids.DEFAULT_ALPHABET;

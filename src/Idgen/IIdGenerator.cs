@@ -11,7 +11,7 @@ using Mono.Options;
 
 namespace Idgen
 {
-    interface IIdGenerator
+    public interface IIdGenerator
     {
         string Command { get; }
         string CommandDescription { get; }

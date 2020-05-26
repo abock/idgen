@@ -12,7 +12,7 @@ using Mono.Options;
 
 namespace Idgen
 {
-    sealed class PhoneGenerator : IIdGenerator
+    public sealed class PhoneGenerator : IIdGenerator
     {
         public string Command { get; } = "phone";
 

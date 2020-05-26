@@ -12,7 +12,7 @@ using Mono.Options;
 
 namespace Idgen
 {
-    sealed class NanoidGenerator : IIdGenerator
+    public sealed class NanoidGenerator : IIdGenerator
     {
         int size = 21;
         string alphabet = "_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";

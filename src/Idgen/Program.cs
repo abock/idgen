@@ -16,7 +16,7 @@ using static Xamarin.GuidHelpers;
 
 namespace Idgen
 {
-    static class Program
+    public static class Program
     {
         static readonly string version = typeof(Program)
             .Assembly
