@@ -26,7 +26,5 @@ jobs:
       run: dotnet build --configuration release --no-restore
     - name: Pack
       run: dotnet pack --configuration release --no-restore --no-build
-    - id: getfilename
-        run: echo "::set-output name=file::$(ls build/*fat.jar)"
     - name: Push
       run: dotnet nuget push --api-key ${{secrets.NUGET_PUSH_TOKEN}} --source https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols _artifacts/*.nupkg _artifacts/*.nupkg
