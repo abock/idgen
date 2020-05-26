@@ -25,16 +25,4 @@
       Text="PackageVersion: $(PackageVersion)"
       Importance="high"/>
   </Target>
-
-  <Target
-    Name="PushToNuGet"
-    DependsOnTargets="Pack">
-    <PropertyGroup>
-      <PackagePath>$(PackageOutputPath)\$(PackageId).$(PackageVersion).nupkg</PackagePath>
-    </PropertyGroup>
-    <Error
-      Condition="'$(NuGetApiKey)' == ''"
-      Text="You must specify the NuGetApiKey property"/>
-    <Exec Command="dotnet nuget push &quot;$(PackagePath)&quot; -k &quot;$(NuGetApiKey)&quot; -s &quot;https://api.nuget.org/v3/index.json&quot;"/>
-  </Target>
 </Project>
