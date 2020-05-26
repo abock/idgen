@@ -59,7 +59,7 @@ namespace Idgen
 
             try
             {
-                value = Convert.ToInt32(str, @base);
+                value = Convert.ToInt32(numStr, @base);
                 if (negate)
                     value = -value;
                 return true;
@@ -81,7 +81,7 @@ namespace Idgen
 
             try
             {
-                value = Convert.ToInt64(str, @base);
+                value = Convert.ToInt64(numStr, @base);
                 if (negate)
                     value = -value;
                 return true;
