@@ -25,4 +25,4 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration release --no-restore --no-build
     - name: Push
-      run: dotnet nuget push -k ${{secrets.NUGET_PUSH_TOKEN}} --skip-duplicate _artifacts/*.nupkg
+      run: dotnet nuget push --api-key ${{secrets.NUGET_PUSH_TOKEN}} --source https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols _artifacts/*.nupkg
