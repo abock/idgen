@@ -117,7 +117,7 @@ For GUID/UUIDs, a number of representation formats are supported via the `-f` or
 | `Base64` | The binary representation of the GUID encoded in base 64. _This format ignores the `-upper` option if specified._ |
 | `Short` | Like Base64, but with padding (`==`) stripped, `/` changed to `_`, and `+` changed to `-`. |
 | `N` | 32 digits:<br>`00000000000000000000000000000000` |
-| `D` | 32 digits separated by hyphens:<br>`00000000-0000-0000-0000-000000000000)` |
+| `D` | 32 digits separated by hyphens:<br>`00000000-0000-0000-0000-000000000000` |
 | `B` | 32 digits separated by hyphens, enclosed in braces:<br>`{00000000-0000-0000-0000-000000000000}` |
 | `P` | 32 digits separated by hyphens, enclosed in parentheses:<br>`(00000000-0000-0000-0000-000000000000)` |
 | `X` | Four hexadecimal values enclosed in braces, where the fourth value is a subset of eight hexadecimal values that is also enclosed in braces:<br>`{0x00000000,0x0000,0x0000,{0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}}` |
