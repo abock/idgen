@@ -91,7 +91,8 @@ namespace Idgen
                 new GuidGenerator.V3 (),
                 new NanoidGenerator (),
                 new HashidsGenerator (),
-                new XcodeIdGenerator ()
+                new XcodeIdGenerator (),
+                new PhoneGenerator ()
             };
 
             foreach (var generator in generators)
