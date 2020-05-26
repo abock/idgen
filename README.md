@@ -1,6 +1,6 @@
 # Identifier Generator
 
-![.NET Core Build & Pack](https://github.com/abock/idgen/workflows/.NET%20Core%20Build%20&%20Pack/badge.svg)
+[![.NET Core](https://github.com/abock/idgen/workflows/.NET%20Core/badge.svg)](https://github.com/abock/idgen/actions?query=workflow%3A%22.NET+Core%22)
 [![NuGet Badge](https://buildstats.info/nuget/IdentifierGenerator)](https://www.nuget.org/packages/IdentifierGenerator/)
 [![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](LICENSE)
 
