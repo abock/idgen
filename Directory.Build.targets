@@ -1,7 +1,7 @@
 <Project>
   <Target
     Name="SetVersions"
-    BeforeTargets="GetAssemblyVersion;GetPackageVersion;Pack"
+    BeforeTargets="GetAssemblyVersion;GetPackageVersion;InitializeSourceControlInformation"
     Returns="Version">
     <Exec
       Command="git for-each-ref --sort=taggerdate --format '%25(refname)' refs/tags"
