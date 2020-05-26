@@ -1,6 +1,6 @@
 # Identifier Generator
 
-[![Travis CI](https://travis-ci.org/abock/idgen.svg?branch=master)](https://travis-ci.org/abock/idgen)
+![.NET Core Build & Pack](https://github.com/abock/idgen/workflows/.NET%20Core%20Build%20&%20Pack/badge.svg)
 [![NuGet Badge](https://buildstats.info/nuget/IdentifierGenerator)](https://www.nuget.org/packages/IdentifierGenerator/)
 [![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](LICENSE)
 
