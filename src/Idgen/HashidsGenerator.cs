@@ -42,7 +42,7 @@ namespace Idgen
                     "The ID should be at least {SIZE} characters in length.",
                     v =>
                     {
-                        if (v != null && (!int.TryParse (v, out minHashLength) || minHashLength <= 0))
+                        if (v != null && (!NumberParse.TryParse (v, out minHashLength) || minHashLength <= 0))
                             throw new Exception (
                                 "SIZE must be a positive integer.");
                     }
@@ -69,7 +69,7 @@ namespace Idgen
             return new Hashids(salt, minHashLength, alphabet, seps)
                 .Encode(numberStrings.Select(a =>
                 {
-                    if (!uint.TryParse(a, out var part))
+                    if (!NumberParse.TryParse(a, out var part) || part < 0)
                         throw new Exception($"NUMBER '{a}'must be a positive integer or zero.");
                     return (int)part;
                 }));

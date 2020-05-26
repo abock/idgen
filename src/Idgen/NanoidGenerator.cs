@@ -31,7 +31,7 @@ namespace Idgen
                     "s|size=",
                     "The ID will be {SIZE} characters in length (21 if unspecified).",
                     v => {
-                        if (v != null && (!int.TryParse (v, out size) || size <= 0))
+                        if (v != null && (!NumberParse.TryParse (v, out size) || size <= 0))
                             throw new Exception (
                                 "SIZE must be a positive integer.");
                     }

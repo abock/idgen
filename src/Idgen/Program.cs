@@ -31,7 +31,7 @@ namespace Idgen
         static int Main(string[] args)
         {
             bool showVersion = false;
-            uint numberOfIds = 1;
+            int numberOfIds = 1;
 
             var firstArg = args.FirstOrDefault();
             if (string.IsNullOrEmpty(firstArg) || firstArg[0] == '-' || firstArg[0] == '/')
@@ -75,7 +75,7 @@ namespace Idgen
                     "n=",
                     "Generate {NUMBER} of identifiers", v =>
                     {
-                        if (!uint.TryParse (v, out numberOfIds))
+                        if (!NumberParse.TryParse (v, out numberOfIds) || numberOfIds < 0)
                             throw new Exception (
                                 "NUMBER must be a positive integer, or zero, for the -number option.");
                     }
@@ -149,6 +149,12 @@ namespace Idgen
                         Console.WriteLine(id);
                 }
             }
+
+            suite.Add(
+                "\n" +
+                "NOTE: any argument that expects a number my be specified in decimal, " +
+                "binary (0b1001), or hex (0xabcd and ab123h) notation. Numbers may " +
+                "also contain digit separators (_ and ,) and arbitrary whitespace.");
 
             try
             {

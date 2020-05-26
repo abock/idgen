@@ -33,6 +33,8 @@ $ dotnet tool update -g IdentifierGenerator
 
 Run `idgen --help` after installing for detailed options.
 
+> **NOTE:** any argument that expects a number my be specified in decimal, binary (`0b1001`), or hex (`0xabcd` and `ab123h`) notation. Numbers may also contain digit separators (`_` and `,`) and arbitrary whitespace.
+
 ### Generate a single v4 random GUID
 ```bash
 $ idgen
