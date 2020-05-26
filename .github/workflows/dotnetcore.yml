@@ -1,0 +1,24 @@
+name: .NET Core Build & Pack
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.200
+    - name: NuGet Restore
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration release --no-restore
+    - name: Pack
+      run: dotnet pack --configuration release --no-restore --no-build
