@@ -14,13 +14,8 @@ namespace Idgen
     {
         static readonly Regex strip = new Regex(@"[\s_,]*");
 
-        public static bool TryParse(string str, out int value)
+        static (string str, int @base, bool negate) Configure(string str)
         {
-            value = int.MinValue;
-
-            if (str is null)
-                return false;
-            
             str = str.Trim();
 
             var negate = false;
@@ -50,9 +45,43 @@ namespace Idgen
                 str = str.Substring(2);
             }
 
+            return (str, @base, negate);
+        }
+
+        public static bool TryParse(string str, out int value)
+        {
+            value = int.MinValue;
+
+            if (str is null)
+                return false;
+            
+            var (numStr, @base, negate) = Configure(str);
+
             try
             {
                 value = Convert.ToInt32(str, @base);
+                if (negate)
+                    value = -value;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool TryParse64(string str, out long value)
+        {
+            value = long.MinValue;
+
+            if (str is null)
+                return false;
+            
+            var (numStr, @base, negate) = Configure(str);
+
+            try
+            {
+                value = Convert.ToInt64(str, @base);
                 if (negate)
                     value = -value;
                 return true;

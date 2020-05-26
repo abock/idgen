@@ -14,7 +14,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>guid;guids;generator;id;identifier;identifiers;nanoid;hashid;hashids;uuid;uuids;xcode;phone;</PackageTags>
     <Description>A simple .NET Core global tool to generate any number of GUID/UUIDs (v3 MD5 hashed, v4 random, v5 SHA-1 hashed), Hashids, Nanoids, Xcode identifiers suitable for storyboard and XIB files, and more.</Description>
-    <PackageReleaseNotes>Added a -mixed-endian option for GUID/UUID generation. Added support for reading hex number arguments on the command line.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support for 64-bit hashids. Added a -mixed-endian option for GUID/UUID generation. Added support for reading hex number arguments on the command line.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\icon.png" Pack="true" PackagePath="\"/>
