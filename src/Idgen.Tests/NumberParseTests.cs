@@ -1,3 +1,10 @@
+//
+// Author:
+//   Aaron Bockover <aaron@abock.dev>
+//
+// Copyright 2018-2020 Aaron Bockover.
+// Licensed under the MIT License.
+
 using System;
 
 using Xunit;
