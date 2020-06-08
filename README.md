@@ -71,6 +71,18 @@ $ idgen hashid 3 100 45 11 -salt bojangles -a aBcDeFgHiJkLmNoPqRsTuV -s 32
 BPDNPBNqkgLJVRsVaFLBsVJRVDmaeaLm
 ```
 
+### Generate Hashids of numbers 1 to 100 from stdin
+```bash
+$ seq 1 100 | idgen hashid
+jR
+k5
+l5
+...
+vgm
+wjR
+g56
+```
+
 ### Generate 5 Nano IDs
 ```bash
 $ idgen nanoid -n 5

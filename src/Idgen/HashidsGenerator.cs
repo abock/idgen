@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 using Mono.Options;
 
@@ -60,19 +61,34 @@ namespace Idgen
             };
         }
 
+        static readonly Regex spaceRegex = new Regex(@"\s+");
+
         public IEnumerable<string> Generate(IEnumerable<string> args)
         {
             var numberStrings = args.ToArray();
-            if (numberStrings == null || numberStrings.Length == 0)
-                throw new Exception("At least one NUMBER is required to generate a hashid.");
+            if (numberStrings.Length > 0)
+            {
+                yield return GenerateSingle(numberStrings);
+                yield break;
+            }
 
-            yield return new Hashids(salt, minHashLength, alphabet, seps)
+            string line;
+            while ((line = Console.In.ReadLine()) != null)
+            {
+                yield return GenerateSingle(spaceRegex
+                    .Split(line)
+                    .Where(a => !string.IsNullOrEmpty(a))
+                    .ToArray());
+            }
+        }
+
+        string GenerateSingle(string[] numberStrings)
+            => new Hashids(salt, minHashLength, alphabet, seps)
                 .EncodeLong(numberStrings.Select(a =>
                 {
                     if (!NumberParse.TryParse64(a, out var part) || part < 0)
                         throw new Exception($"NUMBER '{a}' must be a positive integer or zero.");
                     return part;
                 }));
-        }
     }
 }
