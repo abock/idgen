@@ -6,6 +6,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using Xunit;
@@ -36,7 +37,7 @@ namespace Idgen
         public void RoundTrip_V4(GuidEncoding encoding, GuidFormat format)
             => AssertRoundTrip(
                 format,
-                new GuidGenerator.V4().Generate(encoding, format));
+                new GuidGenerator.V4().Generate(encoding, format).Single());
 
         void AssertRoundTripNamespaceName(
             GuidGenerator.NamespaceNameGuidGenerator generator,
@@ -48,7 +49,7 @@ namespace Idgen
                 encoding,
                 format,
                 "bojangles",
-                "11de2b26-984e-56b4-aa25-b3bd28ea5ac2");
+                "11de2b26-984e-56b4-aa25-b3bd28ea5ac2").Single();
 
             Assert.Equal(new Guid(expectedValue).ToString(format.ToString()), guidString);
             

@@ -60,13 +60,13 @@ namespace Idgen
             };
         }
 
-        public string Generate(IEnumerable<string> args)
+        public IEnumerable<string> Generate(IEnumerable<string> args)
         {
             var numberStrings = args.ToArray();
             if (numberStrings == null || numberStrings.Length == 0)
                 throw new Exception("At least one NUMBER is required to generate a hashid.");
 
-            return new Hashids(salt, minHashLength, alphabet, seps)
+            yield return new Hashids(salt, minHashLength, alphabet, seps)
                 .EncodeLong(numberStrings.Select(a =>
                 {
                     if (!NumberParse.TryParse64(a, out var part) || part < 0)

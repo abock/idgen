@@ -144,9 +144,11 @@ namespace Idgen
 
                 for (int i = 0; i < numberOfIds; i++)
                 {
-                    var id = generator.Generate(commandArgs);
-                    if (id != null)
-                        Console.WriteLine(id);
+                    foreach (var id in generator.Generate(commandArgs))
+                    {
+                        if (id != null)
+                            Console.WriteLine(id);
+                    }
                 }
             }
 

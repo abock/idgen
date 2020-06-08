@@ -139,10 +139,10 @@ namespace Idgen
 
         protected abstract Guid GenerateGuid(IEnumerable<string> args);
 
-        public string Generate(IEnumerable<string> args = null)
+        public IEnumerable<string> Generate(IEnumerable<string> args = null)
             => Generate(encoding, format, args);
 
-        public string Generate(
+        public IEnumerable<string> Generate(
             GuidEncoding encoding,
             GuidFormat format,
             IEnumerable<string> args = null)
@@ -158,12 +158,14 @@ namespace Idgen
             {
                 case GuidFormat.Base64:
                 case GuidFormat.Short:
-                    return guidString;
+                    yield return guidString;
+                    break;
                 default:
                     if (uppercase)
-                        return guidString.ToUpperInvariant();
-
-                    return guidString;
+                        yield return guidString.ToUpperInvariant();
+                    else
+                        yield return guidString;
+                    break;
             }
         }
 
@@ -231,7 +233,7 @@ namespace Idgen
                 return generator(namespaceGuid, name);
             }
 
-            public string Generate(
+            public IEnumerable<string> Generate(
                 GuidEncoding encoding,
                 GuidFormat format,
                 string name,

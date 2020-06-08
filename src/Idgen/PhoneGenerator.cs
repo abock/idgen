@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 using Mono.Options;
 
@@ -23,17 +24,20 @@ namespace Idgen
 
         public OptionSet Options { get; }
 
-        public string Generate(IEnumerable<string> args)
+        public IEnumerable<string> Generate(IEnumerable<string> args)
         {
+            var builder = new StringBuilder();
+
             foreach (var arg in args)
             {
                 foreach (var c in arg)
-                    Console.Write(Translate(c));
+                    builder.Append(Translate(c));
 
-                Console.WriteLine('#');
+                builder.Append('#');
+
+                yield return builder.ToString();
+                builder.Clear();
             }
-
-            return null;
         }
 
         static char Translate(char c)

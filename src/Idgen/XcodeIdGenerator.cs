@@ -5,7 +5,6 @@
 // Copyright 2018-2020 Aaron Bockover.
 // Licensed under the MIT License.
 
-using System;
 using System.Collections.Generic;
 
 using Mono.Options;
@@ -20,13 +19,15 @@ namespace Idgen
         public string UsageArguments { get; }
         public OptionSet Options { get; }
 
-        public string Generate(IEnumerable<string> args)
-            => Nanoid
+        public IEnumerable<string> Generate(IEnumerable<string> args)
+        {
+            yield return Nanoid
                 .Nanoid
                 .Generate(
                     alphabet: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
                     size: 8)
                 .Insert(3, "-")
                 .Insert(6, "-");
+        }
     }
 }
