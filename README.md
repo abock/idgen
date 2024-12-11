@@ -1,4 +1,4 @@
-# Identifier Generator
+# IdentifierGenerator
 
 ![Build](https://img.shields.io/github/actions/workflow/status/abock/idgen/build.yml)
 ![NuGet Version](https://img.shields.io/nuget/v/IdentifierGenerator)
@@ -11,7 +11,7 @@
 > | **Install** | `dotnet tool install -g IdentifierGenerator` |
 > | **Update** | `dotnet tool update -g IdentifierGenerator`|
 
-`idgen` is a .NET global tool that supports the bulk generation of various kinds of unique<sup>1</sup> identifiers:
+`idgen` (IdentifierGenerator) is a .NET global tool that supports the bulk generation of various kinds of unique<sup>1</sup> identifiers:
 
 * [Versions 3 and 5 GUID/UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Versions_3_and_5_(namespace_name-based)): reproducible hashed namespace + name IDs
   * _Note: use version 5 (SHA-1) over version 3 (MD5) unless compatibility is required._
@@ -36,55 +36,55 @@ Run `idgen --help` after installing for detailed options.
 ```bash
 idgen
 ```
-> ```
+> <pre>
 > 0b0d5b33-b5e9-45cb-8f14-9bdab594cc98
-> ```
+> </pre>
 
 ### Do the same, but upper-case it
 ```bash
 idgen -upper
 ```
-> ```
+> <pre>
 > 8E350BC7-FF37-4E96-A5F7-CD945C9BDC33
-> ```
+> </pre>
 
 ### Generate a true base-64 encoded v4 random GUID
 ```bash
 idgen -f base64
 ```
-> ```
+> <pre>
 > JWn2giJJhUePnVzrCAK8JQ==
-> ```
+> </pre>
 
 ### Generate a true short v4 random GUID (base-64 with minor transformations)
 ```bash
 idgen -f short
 ```
-> ```
+> <pre>
 > 9lsQ5-h1nEy9uS3DMbLoeg
-> ```
+> </pre>
 
 ### Generate a Hashid from a set of numbers
 ```bash
 idgen hashid 3 100 45 11
 ```
-> ```
+> <pre>
 > Q0i67ixxir
-> ```
+> </pre>
 
 ### Generate a Hashid from a set of numbers with a minimum ID length, salt, and alphabet
 ```bash
 idgen hashid 3 100 45 11 -salt bojangles -a aBcDeFgHiJkLmNoPqRsTuV -s 32
 ```
-> ```
+> <pre>
 > BPDNPBNqkgLJVRsVaFLBsVJRVDmaeaLm
-> ```
+> </pre>
 
 ### Generate Hashids of numbers 1 to 100 from stdin
 ```bash
 seq 1 100 | idgen hashid
 ```
-> ```
+> <pre>
 > jR
 > k5
 > l5
@@ -92,19 +92,19 @@ seq 1 100 | idgen hashid
 > vgm
 > wjR
 > g56
-> ```
+> </pre>
 
 ### Generate 5 Nano IDs
 ```bash
 idgen nanoid -n 5
 ```
-> ```
+> <pre>
 > Fm82ZL3eyabMeVAgDGF7k
 > LlrnWI3YrhUbQY3zHiyYc
 > JUExm8eTVmLjLBjVeabZd
 > 1bNIDlndN6W~chHMDq2y9
 > izaokjb4E9ft6~rAgINEy
-> ```
+> </pre>
 
 ### Generate a Nano ID with a custom size and alphabet
 ```bash
@@ -155,9 +155,7 @@ idgen phone "hello world"
 > 43556*96753#
 > ```
 
-
 #### GUID Formats
-
 For GUID/UUIDs, a number of representation formats are supported via the `-f` or `-format`
 
 | `-format` | Description |
