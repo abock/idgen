@@ -57,7 +57,7 @@ public static class GuidFactory
         /// <c>6ba7b814-9dad-11d1-80b4-00c04fd430c8</c>
         /// </summary>
         public static Guid X500 { get; } = new(
-            // 
+            //
             0x6ba7b814,
             0x9dad,
             0x11d1,
