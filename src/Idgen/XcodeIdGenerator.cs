@@ -21,7 +21,7 @@ namespace Idgen
 
         public IEnumerable<string> Generate(IEnumerable<string> args)
         {
-            yield return Nanoid
+            yield return NanoidDotNet
                 .Nanoid
                 .Generate(
                     alphabet: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",

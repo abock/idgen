@@ -12,8 +12,6 @@ using System.Reflection;
 
 using Mono.Options;
 
-using static Xamarin.GuidHelpers;
-
 namespace Idgen
 {
     public static class Program

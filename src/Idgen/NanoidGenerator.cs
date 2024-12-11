@@ -46,7 +46,7 @@ namespace Idgen
 
         public IEnumerable<string> Generate(IEnumerable<string> args)
         {
-            yield return Nanoid.Nanoid.Generate(alphabet, size);
+            yield return NanoidDotNet.Nanoid.Generate(alphabet, size);
         }
     }
 }

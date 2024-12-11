@@ -8,11 +8,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Mono.Options;
 
-using static Xamarin.GuidHelpers;
+using static Idgen.GuidFactory;
 
 namespace Idgen
 {
@@ -212,13 +211,13 @@ namespace Idgen
                     switch (@namespace.ToLowerInvariant())
                     {
                         case "url":
-                            namespaceGuid = GuidNamespace.URL;
+                            namespaceGuid = Rfc4122Namespace.URL;
                             break;
                         case "dns":
-                            namespaceGuid = GuidNamespace.DNS;
+                            namespaceGuid = Rfc4122Namespace.DNS;
                             break;
                         case "oid":
-                            namespaceGuid = GuidNamespace.OID;
+                            namespaceGuid = Rfc4122Namespace.OID;
                             break;
                         default:
                             if (!Guid.TryParse(@namespace, out namespaceGuid))
@@ -228,7 +227,7 @@ namespace Idgen
                 }
 
                 if (namespaceGuid == default)
-                    namespaceGuid = GuidNamespace.URL;
+                    namespaceGuid = Rfc4122Namespace.URL;
 
                 return generator(namespaceGuid, name);
             }
