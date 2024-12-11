@@ -6,8 +6,7 @@
 ![GitHub License](https://img.shields.io/github/license/abock/idgen)
 
 > [!TIP]
-
-> | | |
+> | 🤖 | |
 > |--|---|
 > | **Install** | `dotnet tool install -g IdentifierGenerator` |
 > | **Update** | `dotnet tool update -g IdentifierGenerator`|
