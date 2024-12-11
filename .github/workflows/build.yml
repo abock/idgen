@@ -1,6 +1,7 @@
 name: Build
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
     tags:        
@@ -17,7 +18,7 @@ jobs:
       with:
         fetch-depth: 0
     - run: git fetch --force --prune --tags
-    - name: Setup .NET Core
+    - name: Setup .NET SDK
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: "9.0"
@@ -29,5 +30,7 @@ jobs:
       run: dotnet test --configuration release --no-restore --no-build
     - name: Pack
       run: dotnet pack --configuration release --no-restore --no-build
+
+      
     - name: Push
       run: dotnet nuget push --api-key ${{secrets.NUGET_PUSH_TOKEN}} --source https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols true _artifacts/*.nupkg
