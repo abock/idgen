@@ -2,6 +2,11 @@ name: Build
 
 on:
   workflow_dispatch:
+    inputs:
+      perform_deploy:
+        description: "Deploy *.nupkg artifacts to nuget.org"
+        required: true
+        type: boolean
   push:
     branches: [ main ]
     tags:        
@@ -30,7 +35,6 @@ jobs:
       run: dotnet test --configuration release --no-restore --no-build
     - name: Pack
       run: dotnet pack --configuration release --no-restore --no-build
-
-      
-    - name: Push
+    - name: Deploy to nuget.org
+      if: ${{ inputs.perform_deploy }}
       run: dotnet nuget push --api-key ${{secrets.NUGET_PUSH_TOKEN}} --source https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols true _artifacts/*.nupkg
