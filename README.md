@@ -11,7 +11,7 @@
 > | **Install** | `dotnet tool install -g IdentifierGenerator` |
 > | **Update** | `dotnet tool update -g IdentifierGenerator`|
 
-`idgen` (IdentifierGenerator) is a .NET global tool that supports the bulk generation of various kinds of unique<sup>1</sup> identifiers:
+IdentifierGenerator (`idgen`) is a .NET global tool that supports the bulk generation of various kinds of unique<sup>1</sup> identifiers:
 
 * [Versions 3 and 5 GUID/UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Versions_3_and_5_(namespace_name-based)): reproducible hashed namespace + name IDs
   * _Note: use version 5 (SHA-1) over version 3 (MD5) unless compatibility is required._
