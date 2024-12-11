@@ -1,4 +1,4 @@
-name: .NET Core
+name: Build
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.200
+        dotnet-version: 9.0
     - name: NuGet Restore
       run: dotnet restore
     - name: Build
