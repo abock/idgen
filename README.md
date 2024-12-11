@@ -36,55 +36,55 @@ Run `idgen --help` after installing for detailed options.
 ```bash
 idgen
 ```
-> <code>
+> <pre>
 > 0b0d5b33-b5e9-45cb-8f14-9bdab594cc98
-> </code>
+> </pre>
 
 ### Do the same, but upper-case it
 ```bash
 idgen -upper
 ```
-> <code>
+> <pre>
 > 8E350BC7-FF37-4E96-A5F7-CD945C9BDC33
-> </code>
+> </pre>
 
 ### Generate a true base-64 encoded v4 random GUID
 ```bash
 idgen -f base64
 ```
-> <code>
+> <pre>
 > JWn2giJJhUePnVzrCAK8JQ==
-> </code>
+> </pre>
 
 ### Generate a true short v4 random GUID (base-64 with minor transformations)
 ```bash
 idgen -f short
 ```
-> <code>
+> <pre>
 > 9lsQ5-h1nEy9uS3DMbLoeg
-> </code>
+> </pre>
 
 ### Generate a Hashid from a set of numbers
 ```bash
 idgen hashid 3 100 45 11
 ```
-> <code>
+> <pre>
 > Q0i67ixxir
-> </code>
+> </pre>
 
 ### Generate a Hashid from a set of numbers with a minimum ID length, salt, and alphabet
 ```bash
 idgen hashid 3 100 45 11 -salt bojangles -a aBcDeFgHiJkLmNoPqRsTuV -s 32
 ```
-> <code>
+> <pre>
 > BPDNPBNqkgLJVRsVaFLBsVJRVDmaeaLm
-> </code>
+> </pre>
 
 ### Generate Hashids of numbers 1 to 100 from stdin
 ```bash
 seq 1 100 | idgen hashid
 ```
-> <code>
+> <pre>
 > jR
 > k5
 > l5
@@ -92,68 +92,68 @@ seq 1 100 | idgen hashid
 > vgm
 > wjR
 > g56
-> </code>
+> </pre>
 
 ### Generate 5 Nano IDs
 ```bash
 idgen nanoid -n 5
 ```
-> <code>
+> <pre>
 > Fm82ZL3eyabMeVAgDGF7k
 > LlrnWI3YrhUbQY3zHiyYc
 > JUExm8eTVmLjLBjVeabZd
 > 1bNIDlndN6W~chHMDq2y9
 > izaokjb4E9ft6~rAgINEy
-> </code>
+> </pre>
 
 ### Generate a Nano ID with a custom size and alphabet
 ```bash
 idgen nanoid -s 32 -alphabet abcdefghijklmnopqrstuvwxyz
 ```
-> ```
+> <pre>
 > aqmtbhpgomnpvudpmtesoooakyrrdrap
-> ```
+> </pre>
 
 ### Generate a v5 SHA-1 namespace + name hashed GUID using the URL namespace and the name _`bojangles`_
 ```bash
 idgen v5 bojangles
 ```
-> ```
+> <pre>
 > 11de2b26-984e-56b4-aa25-b3bd28ea5ac2
-> ```
+> </pre>
 
 ### Generate a v5 SHA-1 namespace + name hashed GUID using a custom namespace and the name _`bojangles`_
 ```bash
 idgen v5 bojangles 11de2b26-984e-56b4-aa25-b3bd28ea5ac2
 ```
-> ```
+> <pre>
 > de9425a4-e8dd-510b-8e00-b6ac890c733a
-> ```
+> </pre>
 
 ### Generate a v5 SHA-1 namespace + name hashed GUID from `stdin`
 
 ```bash
 idgen v5 - < /usr/share/dict/words
 ```
-> ```
+> <pre>
 > e54b4418-5a27-5bdb-a1e8-24a89e2a8634
-> ```
+> </pre>
 
 ### Generate an ID suitable for an Xcode storyboard
 ```bash
 idgen xcode
 ```
-> ```
+> <pre>
 > KoW-8m-wjo
-> ```
+> </pre>
 
 ### Encode a string suitable for [3x4 numeric keypad/phone entry][phonewords]
 ```bash
 idgen phone "hello world"
 ```
-> ```
+> <pre>
 > 43556*96753#
-> ```
+> </pre>
 
 #### GUID Formats
 For GUID/UUIDs, a number of representation formats are supported via the `-f` or `-format`
