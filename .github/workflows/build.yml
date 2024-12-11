@@ -9,7 +9,7 @@ on:
         type: boolean
   push:
     branches: [ main ]
-    tags:        
+    tags:
       - v*
   pull_request:
     branches: [ main ]
@@ -37,4 +37,4 @@ jobs:
       run: dotnet pack --configuration release --no-restore --no-build
     - name: Deploy to nuget.org
       if: ${{ inputs.perform_deploy }}
-      run: dotnet nuget push --api-key ${{secrets.NUGET_PUSH_TOKEN}} --source https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols true _artifacts/*.nupkg
+      run: dotnet nuget push --api-key ${{secrets.NUGET_PUSH_TOKEN}} --source https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols _artifacts/*.nupkg
