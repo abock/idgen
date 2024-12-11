@@ -1,12 +1,10 @@
 # IdentifierGenerator
 
 ![Build](https://img.shields.io/github/actions/workflow/status/abock/idgen/build.yml)
-![NuGet Version](https://img.shields.io/nuget/v/IdentifierGenerator)
-![NuGet Downloads](https://img.shields.io/nuget/dt/IdentifierGenerator)
 ![GitHub License](https://img.shields.io/github/license/abock/idgen)
 
 > [!TIP]
-> | 🤖 | |
+> | ![NuGet Downloads](https://img.shields.io/nuget/dt/IdentifierGenerator) | ![NuGet Version](https://img.shields.io/nuget/v/IdentifierGenerator) |
 > |--|---|
 > | **Install** | `dotnet tool install -g IdentifierGenerator` |
 > | **Update** | `dotnet tool update -g IdentifierGenerator`|
