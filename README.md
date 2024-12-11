@@ -1,10 +1,17 @@
 # Identifier Generator
 
-[![.NET Core](https://github.com/abock/idgen/workflows/.NET%20Core/badge.svg)](https://github.com/abock/idgen/actions?query=workflow%3A%22.NET+Core%22)
-[![NuGet Badge](https://buildstats.info/nuget/IdentifierGenerator)](https://www.nuget.org/packages/IdentifierGenerator/)
-[![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](LICENSE)
+![Build](https://img.shields.io/github/actions/workflow/status/abock/idgen/build.yml)
+![NuGet Version](https://img.shields.io/nuget/v/IdentifierGenerator)
+![NuGet Downloads](https://img.shields.io/nuget/dt/IdentifierGenerator)
+![GitHub License](https://img.shields.io/github/license/abock/idgen)
 
-`idgen` is a .NET Core global tool that supports the bulk generation of various types of unique identifiers:
+> [!TIP]
+>
+> ```bash
+> dotnet tool install -g IdentifierGenerator
+> ```
+
+`idgen` is a .NET global tool that supports the bulk generation of various kinds of unique<sup>1</sup> identifiers:
 
 * [Versions 3 and 5 GUID/UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Versions_3_and_5_(namespace_name-based)): reproducible hashed namespace + name IDs
   * _Note: use version 5 (SHA-1) over version 3 (MD5) unless compatibility is required._
@@ -14,6 +21,10 @@
 * Xcode Storyboard/XIB IDs
 
 It can also encode strings for [3x4 numeric keypad/phone entry][phonewords]. This feature was implemented for and tested on [Fidelity's](https://www.fidelity.com/) antiquated phone authentication system, wherein they ask for an account password to be entered on a phone keypad.
+
+> [!NOTE]
+>
+> <sup>1.</sup> "Uniqueness" is an inherent property of the format used. No ID formats are truly unique._
 
 ## Install & Update
 
