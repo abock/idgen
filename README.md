@@ -24,20 +24,20 @@ It can also encode strings for [3x4 numeric keypad/phone entry][phonewords]. Thi
 
 > [!NOTE]
 >
-> _<sup>1.</sup> "Uniqueness" is an inherent property of the format used. No ID formats are truly unique._
+> _<sup>1.</sup> "Uniqueness" is an inherent property of the chosen format. No ID formats are truly unique._
 
 ## Install & Update
 
 ### Install
 
 ```bash
-$ dotnet tool install -g IdentifierGenerator
+dotnet tool install -g IdentifierGenerator
 ```
 
 ### Update
 
 ```bash
-$ dotnet tool update -g IdentifierGenerator
+dotnet tool update -g IdentifierGenerator
 ```
 
 ## Examples
@@ -49,43 +49,43 @@ Run `idgen --help` after installing for detailed options.
 
 ### Generate a single v4 random GUID
 ```bash
-$ idgen
+idgen
 0b0d5b33-b5e9-45cb-8f14-9bdab594cc98
 ```
 
 ### Do the same, but upper-case it
 ```bash
-$ idgen -upper
+idgen -upper
 8E350BC7-FF37-4E96-A5F7-CD945C9BDC33
 ```
 
 ### Generate a true base-64 encoded v4 random GUID
 ```bash
-$ idgen -f base64
+idgen -f base64
 JWn2giJJhUePnVzrCAK8JQ==
 ```
 
 ### Generate a true short v4 random GUID (base-64 with minor transformations)
 ```bash
-$ idgen -f short
+idgen -f short
 9lsQ5-h1nEy9uS3DMbLoeg
 ```
 
 ### Generate a Hashid from a set of numbers
 ```bash
-$ idgen hashid 3 100 45 11
+idgen hashid 3 100 45 11
 Q0i67ixxir
 ```
 
 ### Generate a Hashid from a set of numbers with a minimum ID length, salt, and alphabet
 ```bash
-$ idgen hashid 3 100 45 11 -salt bojangles -a aBcDeFgHiJkLmNoPqRsTuV -s 32
+idgen hashid 3 100 45 11 -salt bojangles -a aBcDeFgHiJkLmNoPqRsTuV -s 32
 BPDNPBNqkgLJVRsVaFLBsVJRVDmaeaLm
 ```
 
 ### Generate Hashids of numbers 1 to 100 from stdin
 ```bash
-$ seq 1 100 | idgen hashid
+seq 1 100 | idgen hashid
 jR
 k5
 l5
@@ -97,7 +97,7 @@ g56
 
 ### Generate 5 Nano IDs
 ```bash
-$ idgen nanoid -n 5
+idgen nanoid -n 5
 Fm82ZL3eyabMeVAgDGF7k
 LlrnWI3YrhUbQY3zHiyYc
 JUExm8eTVmLjLBjVeabZd
@@ -107,40 +107,42 @@ izaokjb4E9ft6~rAgINEy
 
 ### Generate a Nano ID with a custom size and alphabet
 ```bash
-$ idgen nanoid -s 32 -alphabet abcdefghijklmnopqrstuvwxyz
+idgen nanoid -s 32 -alphabet abcdefghijklmnopqrstuvwxyz
 aqmtbhpgomnpvudpmtesoooakyrrdrap
 ```
 
 ### Generate a v5 SHA-1 namespace + name hashed GUID using the URL namespace and the name _`bojangles`_
 ```bash
-$ idgen v5 bojangles
+idgen v5 bojangles
 11de2b26-984e-56b4-aa25-b3bd28ea5ac2
 ```
 
 ### Generate a v5 SHA-1 namespace + name hashed GUID using a custom namespace and the name _`bojangles`_
 ```bash
-$ idgen v5 bojangles 11de2b26-984e-56b4-aa25-b3bd28ea5ac2
+idgen v5 bojangles 11de2b26-984e-56b4-aa25-b3bd28ea5ac2
 de9425a4-e8dd-510b-8e00-b6ac890c733a
 ```
 
 ### Generate a v5 SHA-1 namespace + name hashed GUID from `stdin`
 
 ```bash
-$ idgen v5 - < /usr/share/dict/words
+idgen v5 - < /usr/share/dict/words
 e54b4418-5a27-5bdb-a1e8-24a89e2a8634
 ```
 
 ### Generate an ID suitable for an Xcode storyboard
 ```bash
-$ idgen xcode
+idgen xcode
 KoW-8m-wjo
 ```
 
 ### Encode a string suitable for [3x4 numeric keypad/phone entry][phonewords]
 ```bash
-$ idgen phone "hello world"
-43556*96753#
+idgen phone "hello world"
 ```
+> ```
+> 43556*96753#
+> ```
 
 
 #### GUID Formats
