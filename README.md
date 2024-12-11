@@ -36,55 +36,55 @@ Run `idgen --help` after installing for detailed options.
 ```bash
 idgen
 ```
-> <pre>
+> <code>
 > 0b0d5b33-b5e9-45cb-8f14-9bdab594cc98
-> </pre>
+> </code>
 
 ### Do the same, but upper-case it
 ```bash
 idgen -upper
 ```
-> <pre>
+> <code>
 > 8E350BC7-FF37-4E96-A5F7-CD945C9BDC33
-> </pre>
+> </code>
 
 ### Generate a true base-64 encoded v4 random GUID
 ```bash
 idgen -f base64
 ```
-> <pre>
+> <code>
 > JWn2giJJhUePnVzrCAK8JQ==
-> </pre>
+> </code>
 
 ### Generate a true short v4 random GUID (base-64 with minor transformations)
 ```bash
 idgen -f short
 ```
-> <pre>
+> <code>
 > 9lsQ5-h1nEy9uS3DMbLoeg
-> </pre>
+> </code>
 
 ### Generate a Hashid from a set of numbers
 ```bash
 idgen hashid 3 100 45 11
 ```
-> <pre>
+> <code>
 > Q0i67ixxir
-> </pre>
+> </code>
 
 ### Generate a Hashid from a set of numbers with a minimum ID length, salt, and alphabet
 ```bash
 idgen hashid 3 100 45 11 -salt bojangles -a aBcDeFgHiJkLmNoPqRsTuV -s 32
 ```
-> <pre>
+> <code>
 > BPDNPBNqkgLJVRsVaFLBsVJRVDmaeaLm
-> </pre>
+> </code>
 
 ### Generate Hashids of numbers 1 to 100 from stdin
 ```bash
 seq 1 100 | idgen hashid
 ```
-> <pre>
+> <code>
 > jR
 > k5
 > l5
@@ -92,19 +92,19 @@ seq 1 100 | idgen hashid
 > vgm
 > wjR
 > g56
-> </pre>
+> </code>
 
 ### Generate 5 Nano IDs
 ```bash
 idgen nanoid -n 5
 ```
-> <pre>
+> <code>
 > Fm82ZL3eyabMeVAgDGF7k
 > LlrnWI3YrhUbQY3zHiyYc
 > JUExm8eTVmLjLBjVeabZd
 > 1bNIDlndN6W~chHMDq2y9
 > izaokjb4E9ft6~rAgINEy
-> </pre>
+> </code>
 
 ### Generate a Nano ID with a custom size and alphabet
 ```bash
