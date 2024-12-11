@@ -13,7 +13,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>guid;guids;generator;id;identifier;identifiers;nanoid;hashid;hashids;uuid;uuids;xcode;phone;</PackageTags>
     <Description>A simple .NET Core global tool to generate any number of GUID/UUIDs (v3 MD5 hashed, v4 random, v5 SHA-1 hashed), Hashids, Nanoids, Xcode identifiers suitable for storyboard and XIB files, and more.</Description>
-    <PackageReleaseNotes>Add support for generating Hashids from stdin. e.g. 'seq 1 100 | idgen hashid'</PackageReleaseNotes>
+    <PackageReleaseNotes>Update .NET to 9.0, Hashids.net to 1.7.0, Nanoid to 3.1.0, and Mono.Options to 6.12.0.148.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\icon.png" Pack="true" PackagePath="\" />
