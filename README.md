@@ -5,7 +5,7 @@
 
 > [!TIP]
 > | ![NuGet Downloads](https://img.shields.io/nuget/dt/IdentifierGenerator) | ![NuGet Version](https://img.shields.io/nuget/v/IdentifierGenerator) |
-> |--|---|
+> |:--|:--|
 > | **Install** | `dotnet tool install -g IdentifierGenerator` |
 > | **Update** | `dotnet tool update -g IdentifierGenerator`|
 
